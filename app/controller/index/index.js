@@ -1,9 +1,10 @@
 const BaseController = require('../../../utils/BaseController')
-const UserModel = require('../../model/AdminModel')
+
 
 class IndexController extends BaseController{
      async get(req, res){
-         res.send('hello world')
+         res.send('1')
+         // res.render('index.html')
     }
 }
 

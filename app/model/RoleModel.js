@@ -3,12 +3,12 @@
 const {Sequelize} = require('../../middleware/sequelize')
 const { STRING, INTEGER, DATE } = Sequelize;
 
-const Admin = Sequelize.sequelize.define('admin', {
+const UserRole = Sequelize.sequelize.define('role', {
     id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-    username: STRING(30),
-    password: STRING(32),
+    rolename: STRING(30),
+    desc: STRING(200),
     createdAt: DATE,
     updatedAt: DATE,
 });
 
-module.exports = Admin;
+module.exports = UserRole;

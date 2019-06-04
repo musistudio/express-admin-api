@@ -1,4 +1,5 @@
-## express-admin-api框架文档
+## express-admin-api
+> 基于express+ant-design-vue的后台管理系统
 #### 1. 目录结构
 express-admin-api-project    
 |---- package.json      

@@ -6,7 +6,6 @@ const BaseController = require('./BaseController')
 const { config } = require('../config')
 const {auth} = require('../middleware/auth')
 
-
 app.set('cookieSecret', config.cookieSecret);
 
 app.map = function(a, route){
@@ -14,7 +13,13 @@ app.map = function(a, route){
     for (let key in a) {
         if(typeof a[key] === 'object') {
             if(a[key] instanceof BaseController) {
-                a['auth'] ? app.use(route, auth) : null     // 需要鉴权路由
+                if(a['auth']) {
+                    app.use(route, function(req, res, next) {
+                        req.allowed = a['auth']
+                        next();
+                    })
+                    app.use(route, auth)
+                }
                 app[key](route, a[key][key].bind(a[key]))
             }else{
                 app.map(a[key], route + key)
@@ -23,6 +28,8 @@ app.map = function(a, route){
     }
 }
 
+
 app.start = () => app.listen(config.server.port, () => console.log(`the server is running on ${`${config.server.ip}:${config.server.port}`}`))
+
 
 exports.app = app

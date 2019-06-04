@@ -2,9 +2,9 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    // 升级数据库时创建admin表
+    // 升级数据库时创建user表
     const { INTEGER, DATE, STRING } = Sequelize;
-    await queryInterface.createTable('admins', {
+    await queryInterface.createTable('users', {
       id: { type: INTEGER, primaryKey: true, autoIncrement: true },
       username: STRING(30),
       password: STRING(32),
@@ -14,7 +14,7 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    // 降级数据库时删除admin表
-    await queryInterface.dropTable('admin');
+    // 降级数据库时删除user表
+    await queryInterface.dropTable('users');
   }
 };
