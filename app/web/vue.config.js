@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: './../../views',
+  publicPath: '/',
   outputDir: './../views',
   css: {
     loaderOptions: {
